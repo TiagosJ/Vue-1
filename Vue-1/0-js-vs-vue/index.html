@@ -1,0 +1,46 @@
+<DOCTYPE html>
+  <html>
+    <head>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      
+    </head>
+    <body>
+      <div id="app">{{ message }} {{ otherAnotherMesagge }}
+        <input  type="text"  v-model="userComment" @keyup.enter="addComment"/>   
+        <!-- v-on =  @ -->
+        <button v-if="userComment.length>0" @click="addComment">ADD</button>
+        <ul>
+          <li v-for="comment in userComments">
+            {{comment}}
+          </li>
+        </ul>
+        <!-- <h1>
+            {{anotherMesssage}}
+            {{userComment}}
+        </h1> -->
+      </div>
+      <script>
+        var uygulama = new Vue({
+          el: "#app",
+          data: {
+            message: "Hello Vue!",
+            anotherMesssage:"Vue framework",
+            otherAnotherMesagge:"Vue Merhaba",
+            // userComment:"istersen proddan istersen koddan değiştir "
+            userComment:"",
+            userComments:[
+              "Vue1",
+              "Vue2",
+              "Vue3"
+            ]
+          },
+          methods:{
+            addComment:function(){
+              this.userComments.push(this.userComment)
+            }
+          }
+        });
+      </script>
+    </body>
+  </html>
+</DOCTYPE>
